@@ -1,0 +1,75 @@
+what is version control?
+A Version Control allows you to manage the versions of your application over time. So imagine the web-server
+project as we add new features or change code with Version Control. We can track those changes, we can 
+create what are essentially save points along the way for the various versions of our application. Now why
+is that useful? Well, imagine you had an application and you had a thousand users who were paying you for
+that app You want to add a new feature to give your users something new and exciting. So you make some 
+changes to your project and you deploy it. Now let's say that you discover that something's wrong with 
+that new feature. There's a bug. So what do you want to do? You want to revert to the previous working 
+state then you want to spend a little more time working on that new feature and when it's ready and the 
+bug is fixed, you'll deploy it back to your users. That's a very simple workflow. But without Version
+Control, you're not going to have an easy way to revert back to a previous working state of your 
+application
+
+what is git:
+we'll be using the git Version Control System. There are other Version Control tools out there, but git is
+by far the most popular and the most widely used and for a good reason it's super fast and easy to work 
+with and you can use git regardless of the programming language you're working with
+
+you have to start up git in every project where you want to use it
+let's imagine that we have a new project.  
+create an empty directory on my machine
+run a command to initialize git in that new project folder
+once git is initialized you can start to add files into your project 
+We have untracked files, unstaged changes, staged changes and finally, we have commits
+by default git doesn't track files you add to your application
+You're going to have to run commands telling git that you want to track specific files
+so we put file into staged changes in order to track them
+once the changges are made then we call commits in order to track changes. an id is generated which track the changes
+when we want to make changes in files that git is already tracking that comes it under unstaged changes instead staged changes
+
+
+SSH : SSH stands for Secure Shell and it gives us a means of securely communicating with another machine
+command to startup ssh agent
+for windows eval $(ssh-agent -s)
+command to show the list the list of ssl file
+ls -a -l ~/.ssh
+command to create ssh key
+ssh-keygen -t[type] rsa[algorithm] -b[bits] 4096 -C[comment] 'comments here'
+command to register a file
+ssh-add
+
+------------pushing repository from command line
+>>>>first setting up the channel of communication. command given below should be run from the pushing project director
+git remote[version of our project hosted on a server of someone else] add[or remove] <name of remote>[can
+    be anything]  git@github.com:ahmedraza90/weather-App-1.git
+>>>>>github makesure who is sedingg me the code. so we need to finalize our ssh configuration:
+cat[simply concatinate the content of the file] ~/.ssh/id_rsa.pub
+>>>>.command to test a ssh connection to the github
+ssh -T git@github.com
+>>>>Then pushing repository
+git push -u origin master   
+
+
+Heroku
+Heroku, that's going to allow us to actually deploy our node.js applications to production
+You're going to have a real URL and anyone with an internet connection will be able to visit that URL to view and use your weather application.
+Now one great thing about Heroku is that, we can manage our applications from the terminal.
+
+>>>>first we upload ssh key on heroku
+heroku keys:add
+>>>>then in oder to create  heroku application
+Heroku create <name of app>(run from the project folder)
+above command give two urls: 
+    first is the location where we can view our application
+    and second is the url for the git repository
+now wee are ready to get the code up on the heroku server
+>>>sometime our root directory contain more than one apps we want to deploy only one app then  we got into that app folder create heroku and run
+heroku git:remote -a <app-name-heroku>
+>>>some change has to be made 
+1--got to lock.json(add 'start' key in script) to tell heroku how to start the app
+2--change port number at app.listen(heroku provide us port value) it is not constant it changes
+heroku provide port at process.env(env is environment variable)
+const port = process.env.PORT
+3--we also make changes to client side javascript where we are using our localhost apis
+there we will use "/weather?location"
