@@ -89,8 +89,3 @@ app.listen(3000)
 //can set up that query string, it gets sent off to the server, the server can use that information with the 
 //request and it can send a response back
 
-//res.send
-//The res.send() function basically sends the HTTP response. The body parameter can be a String or a Buffer object or an object or an Array.
-// Syntax: 
-// res.send( [body] )
-// Parameter: This function accepts a single parameter body that describe the body which is to be sent in the response.
