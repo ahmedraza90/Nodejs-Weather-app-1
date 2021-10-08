@@ -84,8 +84,16 @@ app.listen(3000)
 //it starts with the question mark. this is key value pair
 //the information of query string is available to us in our express route handler. in requ object
 
+//Path parametres:
+// Route parameters are named URL segments that are used to capture the values specified at their position in the URL
+//  “medium.com/@michaeltm98” takes you to my personal profile. “@michaeltm98” is the path parameter that tells the server which profile to send back
 
+// when to use Query Parameter or URI Parameter while designing an API.
+// URI parameter (Path Param) is basically used to identify a specific resource or resources whereas Query Parameter is used to sort/filter those resources.
+// Let's consider an example where you want identify the employee on the basis of employeeID, and in that case, you will be using the URI param.
+// Take another example where you want to filter the employee on the basis of designation, and in that case, you will be using Query Parameter.
 // The client whether it's us typing a URL in the browser or us providing a URL via client side JavaScript 
 //can set up that query string, it gets sent off to the server, the server can use that information with the 
 //request and it can send a response back
+
 
